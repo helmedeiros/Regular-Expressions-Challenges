@@ -1,0 +1,40 @@
+Li na internet, que segundo a spec, emails podem ser beeeem esquisitos, por exemplo, isto são emails válidos:
+ 
+"andré trevisani"@domain.com
+andre=trevisani@domain.com
+por" mais incrível"que'pareca'{isto.eh}um.email_valido@domain.com
+ 
+Mas para fins de aprendizado vamos especificar algumas regras do nosso email:
+ 
+- O nome (o que vem antes do @)
+                1) Só letras minúsculas, números e '_'
+                2) Deve começar com uma letra
+                3) PODE conter UM '.'
+                4) Se houver um ponto, o próximo caractere deve ser uma letra, ou seja, isso não pode "andre.77@gmail.com"
+ 
+- Deve ter um @
+ 
+- O domínio (o que vem depois do @)
+                1) Só letras minúsculas e números (não pode '_')
+                2) Deve começar com uma letra
+                3) Devem terminar por ".algumacoisa" ou “.alguma.coisa”, não pode ter mais de 2 pontos! Nem terminar só com ponto, ou seja, isso não pode “andre@alguma.coisa.”
+                4) Esse "algumacoisa" deve ser composto somente de letras: Ex: "teste.org", "teste.com", "teste.com.br"
+               
+Segue abaixo uma lista de emails que PODEM:
+"eu@gmail.com","sou.eu@gmail.com","sou_eu@gmail.com", "eu@g.com", "eu@yahoo.com.br","eu@meudomino.net", "sou.eu@gmail.com", "eu07@gmail.com", "sou.eu12@gmail.com", "eu_@gmail.com", "eu@g1.com"
+ 
+E uma dos que NÃO PODEM:
+"eugmail.com","eu@7a.com.br","@gmail.com","eu@gmail","eu@.com","eu@gmail.","eu$gmail$com","sou.eu.mesmo@gmail.com","eu @gmail.com","sou-eu@gmail.com","EU@GMAIL.COM", "eu@bol.com.", "eu@rbs_tv.com.br", "eu@domino.hpg.com.br", ".@gmail.com", "eu.@gmail.com", ".eu@gmail.com", "02@gmail.com", "a02.@gmail.com", "a02.12@gmail.com", "1.a@gmail.com", "_eu@gmail.com", " se_liga_no_inicio@efim.da.string "
+ 
+ 
+Caso alguma coisa esteja errada (botei um email inválido na lista que pode, ou vice-versa) me avisem =D
+ 
+Dica: Façam como o tio Jack, por partes! Fica mais fácil!
+Ex: REGEX_QUE_VALIDA_O_NOME@.*
+                .*@REGEX_QUE_VALIDA_O_DOMINIO
+               
+Depois junta as duas: REGEX_QUE_VALIDA_O_NOME@REGEX_QUE_VALIDA_O_DOMINIO
+ 
+[]’s,
+_________________________
+André Trevisani
