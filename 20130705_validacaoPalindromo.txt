@@ -1,0 +1,58 @@
+Palíndromos, são palavras ou frases que podem ser lidas em qualquer direção. Em caso de frases podemos ignorar os espaços.
+Seguem exemplos de alguns palíndromos:
+
+ovo
+Hagah
+Socorram-me subi no ônibus em marrocos
+
+Entretanto, pesquisando na internet vi que identificar palíndromos com regex é BEM complicado, e dependendo da linguagem, não é possível.
+Mas, podemos reduzir a complexidade, para aprendizado. Podemos identificar palíndromos de tamanho fixo, somente com letras minúsculas e espaços.
+
+Uma das maneiras de verificar se um "match" ocorre novamente, é utilizando capturing-groups e back references.
+Uma regex para pegar estas duas palavras (ovo e eve) poderia ser assim:
+(o|e)v(o|e) // Um 'o' ou 'e', seguido de 'v', seguido de 'o' ou 'e'.
+
+Entretando ela dá match para 'ove' e 'evo'. E não queremos isso, queremos que ela pegue na terceira letra exatamente o que pegou na primeira. Para isso, modificamos a regex:
+(o|e)v\1 // Um 'o' ou 'e', seguido de 'v', seguido da mesma coisa que tu pegou no parênteses 1
+
+Podemos por exemplo, verificar quais emails tem o mesmo nome e domínio, finalizando com .com:
+andre@andre.com
+gmail@gmail.com
+
+A regex (somente para letras minusculas) seria assim:
+([a-z])@\1\.com
+
+Enfim, o desafio de hoje pode ser resolvido de várias formas, mas é bem provável que uma das mais simples é utilizando capturing groups, e back references.
+
+Lá vão as regras!
+
+1) Reconhecer palíndromos de 2 (ovo, erre), 3 (rotor) ou 4 (sopapos, anilina) caracteres, pode ser qualquer coisa, só que pra facilitar, não vamos brincar com acentos, nem maiúsculas. Ou seja, isso vai ter: "12aa21" mas isso não: "anã" ou "Alá"
+2) O caractere 'do meio' pode aparecer só uma vez. Ex: ovo
+3) Pode ter espaços. Ex: (123 44 3 21)
+4) A String toda deve ser um Palíndromo
+
+Dica: Os palíndromos de exemplo estão em ordem de complexidade. Solucione um, depois expanda sua regex para pegar o próximo. A regex final deve pegar qualquer um!
+
+Pode:
+1221
+121
+ovo
+123321
+12321
+rotor
+12344321
+1234321
+sopapos
+anilina
+1 234 43 21
+12 34 321
+o vo
+ro tor
+an il in a
+
+Não pode:
+isto é um palíndromo?
+123123
+1234432a
+A23432B
+isto não 123321 é um palíndromo!
