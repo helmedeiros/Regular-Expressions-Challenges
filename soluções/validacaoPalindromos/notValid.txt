@@ -1,0 +1,9 @@
+isto é um palíndromo?
+123123
+1234432a
+A23432B
+isto não 123321 é um palíndromo!
+1 1
+ a a
+ bb 
+ c 

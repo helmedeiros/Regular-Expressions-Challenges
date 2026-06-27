@@ -1,0 +1,46 @@
+<!-- Online view: http://jsfiddle.net/evandroeisinger/p6mw3/ -->
+
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Regex: Palindromos validation. </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    	<style>
+    		.msg {
+			    display: none;
+			}
+			.error {
+			    color: red;
+			}
+			.success {
+			    color: green;
+			}
+    	</style>
+    </head>
+    <body>
+
+		<label for="palin" id="palin">Palíndromo?</label>
+		<input id="palin" name="palin" class="required" /> 
+		<span class="msg error">GTFO!</span>
+		<span class="msg success">Welcome my friend!</span>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>
+			var component = {
+			    input   : $('input[name="palin"]'),
+			    mensage : {
+			        fields  : $('.msg'),
+			        success : $('.success'),
+			        error   : $('.error')
+			    }
+			},
+			    regex  = /^([^\s])?\s?([^\s])?\s?([^\s])\s?([^\s])\s?\4?\s?\3\s?\2?\s?\1?$/;
+
+			component.input.blur(function () {
+			    component.mensage.fields.hide();
+			    regex.test(component.input.val()) ? component.mensage.success.show() : component.mensage.error.show();
+			});
+        </script>
+    </body>
+</html>

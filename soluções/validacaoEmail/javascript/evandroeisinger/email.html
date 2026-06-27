@@ -1,0 +1,46 @@
+<!-- Online view: http://jsfiddle.net/evandroeisinger/p6mw3/ -->
+
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Regex: Email validation. </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    	<style>
+    		.msg {
+			    display: none;
+			}
+			.error {
+			    color: red;
+			}
+			.success {
+			    color: green;
+			}
+    	</style>
+    </head>
+    <body>
+
+    	<label for="email" id="email">Hey!</label>
+		<input id="email" name="email" type="email" class="required" /> 
+		<span class="msg error">You shall not pass!</span>
+		<span class="msg success">You can pass!</span>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>
+			var component = {
+			    input   : $('input[name="email"]'),
+			    mensage : {
+			        fields  : $('.msg'),
+			        success : $('.success'),
+			        error   : $('.error')
+			    }
+			},
+			    regex  = /^[a-z][a-zA-Z0-9_]*(\.[a-zA-Z][a-zA-Z0-9_]*)?@[a-z][a-zA-Z-0-9]*\.[a-z]+(\.[a-z]+)?$/;
+
+			component.input.blur(function () {
+			    component.mensage.fields.hide();
+			    regex.test(component.input.val()) ? component.mensage.success.show() : component.mensage.error.show();
+			});
+        </script>
+    </body>
+</html>
